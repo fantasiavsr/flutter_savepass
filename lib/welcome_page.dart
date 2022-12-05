@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'main_page.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:savepass/main_page.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -163,6 +165,21 @@ class WelcomePage extends StatelessWidget {
                                   0, 0, 0, 0),
                               child: ElevatedButton(
                                 onPressed: () async {
+                                  GoogleSignInAccount? account =
+                                      await GoogleSignIn().signIn();
+                                  if (account != null) {
+                                    GoogleSignInAuthentication auth =
+                                        await account.authentication;
+                                    OAuthCredential credential =
+                                        GoogleAuthProvider.credential(
+                                      accessToken: auth.accessToken,
+                                      idToken: auth.idToken,
+                                    );
+
+                                    await FirebaseAuth.instance
+                                        .signInWithCredential(credential);
+                                  }
+                                  // ignore: use_build_context_synchronously
                                   await Navigator.push(
                                     context,
                                     MaterialPageRoute(

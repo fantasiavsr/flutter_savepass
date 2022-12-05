@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "187486061930",
+    "project_id": "savepass-7c3d9",
+    "storage_bucket": "savepass-7c3d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187486061930:android:8c6babad0b8f79e418d113",
+        "android_client_info": {
+          "package_name": "com.alif.savepass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "187486061930-eie8ac7bhpmjus6jl5ktagctpm80r382.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDohHN9c9lBUtO3_6l1maH-k95VL9pGI0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "187486061930-eie8ac7bhpmjus6jl5ktagctpm80r382.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
