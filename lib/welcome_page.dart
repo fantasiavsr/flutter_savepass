@@ -167,6 +167,7 @@ class WelcomePage extends StatelessWidget {
                                 onPressed: () async {
                                   GoogleSignInAccount? account =
                                       await GoogleSignIn().signIn();
+
                                   if (account != null) {
                                     GoogleSignInAuthentication auth =
                                         await account.authentication;
@@ -179,13 +180,33 @@ class WelcomePage extends StatelessWidget {
                                     await FirebaseAuth.instance
                                         .signInWithCredential(credential);
                                   }
+
+                                  if (FirebaseAuth.instance.currentUser !=
+                                      null) {
+                                    // ignore: use_build_context_synchronously
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const MainPage(),
+                                      ),
+                                    );
+                                  } else {
+                                    // ignore: use_build_context_synchronously
+                                    await Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const WelcomePage(),
+                                      ),
+                                    );
+                                  }
                                   // ignore: use_build_context_synchronously
-                                  await Navigator.push(
+                                  /* await Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) => const MainPage(),
                                     ),
-                                  );
+                                  ); */
                                 },
                                 style: ElevatedButton.styleFrom(
                                   foregroundColor: Colors.black,
