@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:savepass/welcome_page.dart';
+/* import 'package:savepass/welcome_page.dart'; */
 
 import 'start_page.dart';
 import 'main_page.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: FirebaseAuth.instance.currentUser != null
           ? const MainPage()
-          : const WelcomePage(),
+          : const StartPage(),
     );
     /* return FirebaseAuth.instance.currentUser != null
         ? const MainPage()
