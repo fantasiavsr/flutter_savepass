@@ -3,6 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:savepass/welcome_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:savepass/detail_page.dart';
+import 'package:savepass/add_page.dart';
 
 // ignore: must_be_immutable
 class MainPage extends StatelessWidget {
@@ -86,7 +89,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             /* mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center, */
             children: [
-              /* Logo */
+              /* Top Bar */
               Flexible(
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
@@ -188,6 +191,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ],
                 ),
               ),
+              /* Main Content */
               // ignore: sized_box_for_whitespace
               Container(
                 padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
@@ -201,7 +205,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     StreamBuilder(
                       stream: kode
                           .where('email', isEqualTo: user?.email)
-                          /* .orderBy('age', descending: true) */
+                          /* .orderBy('createdAt', descending: true) */
                           .snapshots(),
                       builder: (_, snapshot) {
                         if (snapshot.hasData) {
@@ -212,9 +216,22 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                                   title: Text(document['type']),
                                   subtitle: Text(document['username']),
                                   trailing: IconButton(
-                                    icon: const Icon(Icons.edit),
+                                    icon: const FaIcon(
+                                        FontAwesomeIcons.ellipsisVertical,
+                                        color: Color(0xff6C7C8F)),
                                     onPressed: () {
-                                      /* kode.doc(document.id).delete(); */
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => DetailPage(
+                                            id: document.id,
+                                            type: document['type'],
+                                            username: document['username'],
+                                            password: document['password'],
+                                            note: document['note'],
+                                          ),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ),
@@ -271,7 +288,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                 ),
                 onPressed: () {
-                  /* FirebaseAuth.instance.signOut(); */
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AddPage(),
+                    ),
+                  );
                 },
                 child: const Text(
                   '+',
@@ -358,12 +380,15 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       label: 'Home',
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.search),
-                      label: 'Search',
+                      icon: FaIcon(
+                        FontAwesomeIcons.screwdriverWrench,
+                        size: 18.5,
+                      ),
+                      label: 'Tools',
                     ),
                     BottomNavigationBarItem(
-                      icon: Icon(Icons.add),
-                      label: 'Add',
+                      icon: Icon(Icons.settings),
+                      label: 'Settings',
                     ),
                   ],
                 ),

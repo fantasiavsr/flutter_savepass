@@ -107,7 +107,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                 children: [
                   /* Login Button */
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(30, 0, 30, 20),
                     child: ElevatedButton(
                       onPressed: () async {
                         await Navigator.push(
@@ -120,7 +121,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
                         backgroundColor: const Color(0xff4361EE),
-                        fixedSize: const Size(310, 50),
+                        fixedSize: Size(MediaQuery.of(context).size.width, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -137,7 +138,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                   /* Register Button */
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(30, 0, 30, 20),
                     child: ElevatedButton(
                       onPressed: () async {
                         await Navigator.push(
@@ -150,7 +152,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
                         backgroundColor: Colors.white,
-                        fixedSize: const Size(310, 50),
+                        fixedSize: Size(MediaQuery.of(context).size.width, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -167,7 +169,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   ),
                   /* Sign In Google Button */
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 40),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(30, 0, 30, 40),
                     child: ElevatedButton(
                       onPressed: () async {
                         GoogleSignInAccount? account =
@@ -214,7 +217,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
                         backgroundColor: Colors.white,
-                        fixedSize: const Size(310, 50),
+                        fixedSize: Size(MediaQuery.of(context).size.width, 50),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),

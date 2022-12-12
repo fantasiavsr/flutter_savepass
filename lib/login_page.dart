@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:savepass/main_page.dart';
-import 'package:savepass/welcome_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -199,7 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => MainPage()),
+                                        builder: (context) => const MainPage()),
                                     (Route<dynamic> route) => false,
                                   );
                                 }
