@@ -7,6 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:savepass/detail_page.dart';
 import 'package:savepass/add_page.dart';
+import 'package:savepass/settings_page.dart';
 
 // ignore: must_be_immutable
 class MainPage extends StatelessWidget {
@@ -269,7 +270,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                             }).toList(),
                           );
                         } else {
-                          return const Text('Loading');
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
                         }
                       },
                     ),
@@ -466,12 +469,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       ),
                       IconButton(
                         onPressed: () {
-                          /* Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const MainPage(),
-                          ),
-                        ); */
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SettingsPage(),
+                            ),
+                            (Route<dynamic> route) => false,
+                          );
                         },
                         icon: const Icon(
                           Icons.settings,
