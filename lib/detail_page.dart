@@ -217,7 +217,7 @@ class _DetailPageState extends State<DetailPage> {
                   ),
                 ),
               ),
-              /* BUtton */
+              /* Button */
               Column(
                 /* mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -283,7 +283,7 @@ class _DetailPageState extends State<DetailPage> {
                                 barrierDismissible: true,
                                 barrierColor: Colors.black.withOpacity(0.5),
                                 transitionDuration:
-                                    const Duration(milliseconds: 700),
+                                    const Duration(milliseconds: 300),
                                 context: context,
                                 pageBuilder:
                                     (context, animation, secondaryAnimation) =>
@@ -297,7 +297,12 @@ class _DetailPageState extends State<DetailPage> {
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },
-                                        child: const Text('Tidak'),
+                                        child: const Text(
+                                          'Tidak',
+                                          style: TextStyle(
+                                            color: Color(0xff4361EE),
+                                          ),
+                                        ),
                                       ),
                                       TextButton(
                                         onPressed: () {
@@ -314,7 +319,12 @@ class _DetailPageState extends State<DetailPage> {
                                             ),
                                           );
                                         },
-                                        child: const Text('Ya'),
+                                        child: const Text(
+                                          'Ya',
+                                          style: TextStyle(
+                                            color: Color(0xfEE4343E),
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   ),

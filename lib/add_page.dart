@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:savepass/main_page.dart';
 /* import 'package:google_sign_in/google_sign_in.dart'; */
+import 'package:savepass/generate_password_add.dart';
 
 class AddPage extends StatefulWidget {
-  const AddPage({super.key});
+  final String username, password, note, type;
+
+  const AddPage({
+    Key? key,
+    required this.username,
+    required this.password,
+    required this.note,
+    required this.type,
+  }) : super(key: key);
 
   @override
   State<AddPage> createState() => _AddPageState();
@@ -12,12 +22,13 @@ class AddPage extends StatefulWidget {
 
 class _AddPageState extends State<AddPage> {
   bool _passVisibility = true;
-  var typeController = TextEditingController();
-  var usernameController = TextEditingController();
-  var passwordController = TextEditingController();
-  var noteController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    var typeController = TextEditingController(text: widget.type);
+    var usernameController = TextEditingController(text: widget.username);
+    var passwordController = TextEditingController(text: widget.password);
+    var noteController = TextEditingController(text: widget.note);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -184,7 +195,19 @@ class _AddPageState extends State<AddPage> {
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => GenerateAddPassword(
+                              username: usernameController.text,
+                              password: passwordController.text,
+                              note: noteController.text,
+                              type: typeController.text,
+                            ),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.black,
                         backgroundColor: const Color(0xffffffff),
@@ -296,7 +319,11 @@ class _AddPageState extends State<AddPage> {
                             'email': FirebaseAuth.instance.currentUser?.email,
                             'createdAt': DateTime.now(),
                           });
-                          Navigator.pop(context);
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MainPage()),
+                              (route) => false);
                         }
                       },
                       style: ElevatedButton.styleFrom(

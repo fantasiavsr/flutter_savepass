@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:savepass/tools_page.dart';
 import 'package:savepass/welcome_page.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -82,7 +83,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(30, 70, 30, 0),
+          padding: const EdgeInsetsDirectional.fromSTEB(30, 50, 30, 0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -195,17 +196,46 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               // ignore: sized_box_for_whitespace
               Container(
                 padding: const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
-                height: MediaQuery.of(context).size.height * 0.730,
+                height: MediaQuery.of(context).size.height * 0.750,
                 child: ListView(
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
                   /* padding: const EdgeInsets.all(8), */
                   children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 2),
+                          child: Text(
+                            "Secure your data,",
+                            style: TextStyle(
+                              color: Color(0xff4361EE),
+                              fontSize: 22,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                          child: Text(
+                            "tekan tanda + untuk menambahkan",
+                            style: TextStyle(
+                              color: Color(0xff6C7C8F),
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                     StreamBuilder(
                       stream: kode
                           .where('email', isEqualTo: user?.email)
-                          /* .orderBy('createdAt', descending: true) */
+                          .orderBy('createdAt', descending: true)
                           .snapshots(),
                       builder: (_, snapshot) {
                         if (snapshot.hasData) {
@@ -291,7 +321,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const AddPage(),
+                      builder: (context) => const AddPage(
+                        username: '',
+                        note: '',
+                        password: '',
+                        type: '',
+                      ),
                     ),
                   );
                 },
@@ -304,9 +339,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
               ),
               /* Bottom Nav */
               Container(
-                /* padding: const EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0), */
-                color: Colors.white,
-                child: /* Row(
+                  /* padding: const EdgeInsetsDirectional.fromSTEB(30, 0, 30, 0), */
+                  color: Colors.white,
+                  child: /* Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -369,7 +404,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                     ),
                   ],
                 ), */
-                    BottomNavigationBar(
+                      /* BottomNavigationBar(
                   type: BottomNavigationBarType.fixed,
                   backgroundColor: Colors.white,
                   selectedItemColor: const Color.fromRGBO(67, 97, 238, 1),
@@ -391,8 +426,61 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                       label: 'Settings',
                     ),
                   ],
-                ),
-              ),
+                ), */
+                      Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const MainPage(),
+                            ),
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                        icon: const Icon(
+                          Icons.home,
+                          color: Color.fromRGBO(67, 97, 238, 1),
+                        ),
+                        tooltip: 'Home',
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ToolsPage(),
+                            ),
+                            (Route<dynamic> route) => false,
+                          );
+                        },
+                        icon: const FaIcon(
+                          FontAwesomeIcons.screwdriverWrench,
+                          size: 18.5,
+                          color: Color.fromRGBO(67, 97, 238, 1),
+                        ),
+                        tooltip: 'Tools',
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          /* Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const MainPage(),
+                          ),
+                        ); */
+                        },
+                        icon: const Icon(
+                          Icons.settings,
+                          color: Color.fromRGBO(67, 97, 238, 1),
+                        ),
+                        tooltip: 'Add',
+                      ),
+                    ],
+                  )),
             ],
           ),
         ),

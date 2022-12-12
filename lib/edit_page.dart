@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:savepass/detail_page.dart';
+import 'package:savepass/generate_password.dart';
 
 class EditPage extends StatefulWidget {
   final String username, password, note, type, id;
@@ -196,7 +197,20 @@ class _EditPageState extends State<EditPage> {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => GeneratePassword(
+                            username: widget.username,
+                            password: widget.password,
+                            note: widget.note,
+                            type: widget.type,
+                            id: widget.id,
+                          ),
+                        ),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: Colors.black,
                       backgroundColor: const Color(0xffffffff),
