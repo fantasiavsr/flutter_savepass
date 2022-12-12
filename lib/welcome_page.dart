@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:savepass/main_page.dart';
+import 'package:savepass/register_page.dart';
 
 import 'login_page.dart';
 
@@ -145,7 +146,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                         await Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const WelcomePage(),
+                            builder: (context) => const RegisterPage(),
                           ),
                         );
                       },

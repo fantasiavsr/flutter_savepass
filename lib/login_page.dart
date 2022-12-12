@@ -181,8 +181,8 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         /* Login Button */
                         Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(0, 0, 0, 20),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              30, 0, 30, 20),
                           child: ElevatedButton(
                             onPressed: () async {
                               try {
@@ -224,7 +224,8 @@ class _LoginPageState extends State<LoginPage> {
                             style: ElevatedButton.styleFrom(
                               foregroundColor: Colors.black,
                               backgroundColor: const Color(0xff4361EE),
-                              fixedSize: const Size(310, 50),
+                              fixedSize:
+                                  Size(MediaQuery.of(context).size.width, 50),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
