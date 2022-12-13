@@ -16,6 +16,5 @@ fitur yang terdapat project ini:
   <img src="https://user-images.githubusercontent.com/86558365/207308504-23188aa5-54ca-4595-a9c2-a9313d9853be.jpeg" width="170">
   <img src="https://user-images.githubusercontent.com/86558365/207308514-b120e911-6288-42be-9610-704649e56e5c.jpeg" width="170">
   <img src="https://user-images.githubusercontent.com/86558365/207308531-55ef0613-b48a-4a64-ae3c-9636abb521ca.jpeg" width="170">
-  <img src="" width="170">
+  <img src="https://user-images.githubusercontent.com/86558365/207308800-2c2e9a90-2622-4222-8761-6c3d62856baa.jpeg" width="170">
 </p>
-
