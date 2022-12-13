@@ -2,7 +2,7 @@
 
 Project Savepass merupakan aplikasi password manager
 
-fitur yang terdapat project ini (W.I.P):
+fitur yang terdapat project ini:
 1. Firebase untuk login menggunakan Google / Email & Password
 2. Firestore untuk menyimpan data 
 3. Generate Password
